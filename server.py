@@ -28,16 +28,19 @@ class OrderCreate(BaseModel):
 # ---- ENDPOINTS (tools exposed over HTTP) ---- #
 
 @app.get("/tools/list_customers")
+@app.head("/tools/list_customers")
 def list_customers():
     """Get all customers."""
     return call_api("/customers")
 
 @app.get("/tools/get_customer/{customer_id}")
+@app.head("/tools/get_customer/{customer_id}")
 def get_customer(customer_id: str):
     """Get a single customer by ID."""
     return call_api(f"/customers/{customer_id}")
 
 @app.get("/tools/list_orders")
+@app.head("/tools/list_orders")
 def list_orders():
     """Get all orders."""
     return call_api("/orders")
@@ -45,19 +48,22 @@ def list_orders():
 @app.post("/tools/create_order")
 def create_order(order: OrderCreate):
     """Create a new order."""
-    return call_api("/orders", method="POST", json=order.dict())
+    return call_api("/orders", method="POST", json=order.model_dump())
 
 @app.get("/tools/list_addresses")
+@app.head("/tools/list_addresses")
 def list_addresses():
     """Get all addresses."""
     return call_api("/addresses")
 
 @app.get("/tools/list_products")
+@app.head("/tools/list_products")
 def list_products():
     """Get all products."""
     return call_api("/products")
 
 @app.get("/tools/get_full_customer/{customer_id}")
+@app.head("/tools/get_full_customer/{customer_id}")
 def get_full_customer(customer_id: str):
     """Get customer with related addresses and orders."""
     customer = call_api(f"/customers/{customer_id}")
