@@ -5,7 +5,7 @@ from fastmcp import FastMCP, tools
 API_BASE = os.getenv("API_BASE", "https://apistore-8kfz.onrender.com")
 API_TOKEN = os.getenv("API_TOKEN", "mysecrettoken123")
 
-app = FastMCP("customer-api-mcp", host="0.0.0.0",port=8000)
+app = FastMCP("customer-api-mcp", host="0.0.0.0",port=10000)
 
 def call_api(path: str, method="GET", json=None):
     headers = {
