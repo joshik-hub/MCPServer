@@ -29,6 +29,7 @@ class OrderCreate(BaseModel):
 
 @app.get("/tools/list_customers")
 @app.head("/tools/list_customers")
+@app.post("/tools/list_customers")
 def list_customers():
     """Get all customers."""
     return call_api("/customers")
