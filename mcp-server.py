@@ -28,7 +28,7 @@ def call_api(path, method="GET", data=None, params=None):
 # ========================
 # FastMCP App
 # ========================
-app = FastMCP("customer-api-mcp", host="0.0.0.0",port=8000)
+app = FastMCP("customer-api-mcp", host="0.0.0.0",port=10000)
 
 # ========================
 # Customers
@@ -132,5 +132,5 @@ def delete_product(product_id: str) -> dict:
 # ========================
 if __name__ == "__main__":
     print("Starting MCP server for Customer API...")
-    app.run(transport="stdio")
+    app.run(transport="streamable-http")
 
